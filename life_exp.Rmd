@@ -1,0 +1,45 @@
+---
+title: "week2"
+author: "Peiyue Zhao"
+date: "9/1/2020"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Ex1
+
+  Loads the gapminder_unfiltered data frame into R, and   
+  Calculates the maximum life expectancy each year and the corresponding country that had that maximum life expectancy. Hint: There are multiple ways to do this, but the easiest involves group_by() and filter().
+
+```{r}
+library(gapminder)
+library(tidyverse)
+data("gapminder-unfiltered")
+head(gapminder_unfiltered)
+```
+
+
+
+```{r}
+gapminder_unfiltered%>%
+  group_by(year)%>%
+  arrange(year)%>%
+  filter(lifeExp==max(lifeExp)) %>%
+  select(year,country,lifeExp)->md
+md
+```
+
+filter is better than summarise, one year have multiple country, when use summarise it will just show one maximum lifeExp
+
+
+Now I will make a plot of this
+
+
+
+
+
+
+
